@@ -11,13 +11,13 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            playerManagment = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManagment>();
-            UIManager = GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>();
         }
         else
         {
             Destroy(gameObject);
         }
+
+        playerManagment = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManagment>();
     }
 
     public float MaxTime { get => maxTime; set => maxTime = value; }
@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text totalSavedText;
 
     private PlayerManagment playerManagment;
-    private UIManager UIManager;
     private float timer;
     private float maxTime = 120;
     private int totalPoints;
@@ -57,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
-        UIManager.winScreen.SetActive(true);
+        UIManager.instance.winScreen.SetActive(true);
         obstaclesSpawn.SetSpawning(false);
         totalPoints = playerManagment.Health * playerManagment.AlliesRescues * 10;
         totalPointsText.text = totalPoints.ToString();
@@ -66,7 +65,7 @@ public class GameManager : MonoBehaviour
 
     public void Lose()
     {
-        UIManager.loseScreen.SetActive(true);
+        UIManager.instance.loseScreen.SetActive(true);
         obstaclesSpawn.SetSpawning(false);
         totalPoints = playerManagment.Health * playerManagment.AlliesRescues * 10;
         totalPointsText.text = totalPoints.ToString();
@@ -75,14 +74,14 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        UIManager.pauseScreen.SetActive(true);
+        UIManager.instance.pauseScreen.SetActive(true);
         Time.timeScale = 0;
         isPaused = true;
     }
 
     public void Resume()
     {
-        UIManager.pauseScreen.SetActive(false);
+        UIManager.instance.pauseScreen.SetActive(false);
         Time.timeScale = 1.0f;
         isPaused = false;
     }
@@ -91,8 +90,8 @@ public class GameManager : MonoBehaviour
     {
         obstaclesSpawn.SetSpawning(true);
         timer = 0;
-        UIManager.winScreen.SetActive(false);
-        UIManager.loseScreen.SetActive(false);
-        UIManager.pauseScreen.SetActive(false);
+        UIManager.instance.winScreen.SetActive(false);
+        UIManager.instance.loseScreen.SetActive(false);
+        UIManager.instance.pauseScreen.SetActive(false);
     }
 }

@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Threading;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
     private ProgessBar progessBar;
     private PlayerManagment playerManagment;
     public TextMeshProUGUI textCiviles;
@@ -22,6 +22,14 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         progessBar = GetComponentInChildren<ProgessBar>();
         playerManagment = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManagment>();
     }
@@ -46,6 +54,11 @@ public class UIManager : MonoBehaviour
         }
 
         progessBar.UpdateProgess(GameManager.instance.Timer, GameManager.instance.MaxTime);
+    }
+
+    public void UpdateUi()
+    {
+
     }
 
 }

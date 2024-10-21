@@ -11,7 +11,6 @@ public class PlayerManagment : MonoBehaviour
     [SerializeField] private int alliesRescues;
 
     private int levelcompleted = 0;
-    private int nivel = 0;
     private float currentPosition;
     private bool canDie;
     private bool isDead;
