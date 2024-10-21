@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class ScenesManager : MonoBehaviour
 {
-    
     public int nextSceneLoad;
     private void Start()
     {
@@ -16,8 +12,8 @@ public class ScenesManager : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
-        
     }
+
     public void levelSelectorMenu()
     {
         SceneManager.LoadScene(1);
@@ -26,7 +22,7 @@ public class ScenesManager : MonoBehaviour
             PlayerPrefs.SetInt("levelAt", nextSceneLoad);
         }
     }
-   
+
     public void nextLevel()
     {
         SceneManager.LoadScene(nextSceneLoad);
@@ -35,31 +31,23 @@ public class ScenesManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("levelAt", nextSceneLoad);
         }
-
     }
 
     public void QuitGame()
     {
         PlayerPrefs.DeleteAll();
-       Application.Quit();  
+        Application.Quit();
     }
 
-
-    
     public void RestartGame()
     {
+        GameManager.instance.Restart();
         int actualScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(actualScene);
     }
-
 
     public void GoMenu()
     {
         SceneManager.LoadScene(0);
     }
-
-  
-
-
-
 }

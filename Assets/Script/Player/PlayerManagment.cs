@@ -1,55 +1,36 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerManagment : MonoBehaviour
 {
+    public int Health { get => health; set => health = value; }
+    public int AlliesRescues { get => alliesRescues; set => alliesRescues = value; }
+
     [SerializeField] private GameObject spawnPoint;
-    [SerializeField] public int HP;
-    [SerializeField] public int levelcompleted = 0;
-    [SerializeField] public int nivel = 0;
-    [SerializeField] public int AlliesRescues;
-    [SerializeField] private float currentPosition;
-    [SerializeField] private bool canDie;
-    [SerializeField] private bool isDead;
-    public UIManager uIManager;
+    [SerializeField] private int health;
+    [SerializeField] private int alliesRescues;
 
-
-    public GameManager gameManager;
-    public LevelSelector levelselector;
-
+    private int levelcompleted = 0;
+    private int nivel = 0;
+    private float currentPosition;
+    private bool canDie;
+    private bool isDead;
     private Animator animator;
+
+    private void Awake()
+    {
+        animator = gameObject.GetComponent<Animator>();
+    }
     void Start()
     {
-        uIManager = gameObject.GetComponent<UIManager>();
-        // Busca el componente Animator
-        animator = gameObject.GetComponent<Animator>();
-        // Se inicializan las variables 
-
-        HP = 3;
-        nivel = 0;
-        AlliesRescues = 0;
+        health = 3;
+        alliesRescues = 0;
         canDie = true;
         isDead = false;
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
-       
-
-        // Se da la informacion de la posicion del jugador
-        currentPosition = transform.position.x;
-
-        // si Vida llega a cero se destruye el jugador
-        if (HP < 0)
-        {
-            Destroy(gameObject);
-        }
         // Si esta muerto, no puede morir y inicia la corrutina RespawnTime
         if (isDead)
         {
@@ -64,38 +45,31 @@ public class PlayerManagment : MonoBehaviour
         // Si collisionamos con un objeto con el Tag "Dead" y Pueda morir se nos resta una vida y nos spawnea en la posicion de spawnPoint
         if (collision.CompareTag("Dead") && canDie == true)
         {
-            
             isDead = true;
-            HP--;
+            Health--;
             transform.position = spawnPoint.transform.position;
-            if (HP <= 0)
+            if (Health <= 0)
             {
-                gameManager.Lose();
+                Destroy(gameObject);
+                GameManager.instance.Lose();
+                StopAllCoroutines();
             }
         }
-
 
         // Si colisionamos con un objeto con el Tag "Allie" Se nos suma un punto a la variable y ese objeto se destruye 
         if (collision.CompareTag("Allie"))
         {
             AlliesRescues++;
             Destroy(collision.gameObject);
-
         }
 
         if (collision.CompareTag("Win"))
         {
-            Time.timeScale = 0;            
-            gameManager.Win();
             levelcompleted++;
-
+            GameManager.instance.Win();
+            StopAllCoroutines();
         }
-
-    
-
     }
-   
-
 
     // Espera 2 segundos luego puede morir y ya no estara muerto(Tiempo de Respawn)
     private IEnumerator RespawnTime()
@@ -105,8 +79,5 @@ public class PlayerManagment : MonoBehaviour
         canDie = true;
         isDead = false;
         animator.SetBool("Dead", false);
-
     }
-
-   
 }

@@ -1,48 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject winScreen;
-    public GameObject loseScreen;
-    public GameObject pauseScreen;
-    
-    
-    public float Timer;
-    public float MaxTime = 120;
-    public int totalPoints;
-    [SerializeField] private TMP_Text totalPointsText;
-    [SerializeField] private TMP_Text totalSavedText;
-    [SerializeField] private PlayerManagment playerManagment;
-    
+    public static GameManager instance;
 
-    public bool isPaused;
-
-
-
-    void Start()
+    private void Awake()
     {
-        
-        winScreen.SetActive(false);
-        loseScreen.SetActive(false);
-        pauseScreen.SetActive(false);
-        Time.timeScale = 1.0f;
-        Timer = 0;
-        totalPoints = 0;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            playerManagment = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManagment>();
+            UIManager = GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
+    public float MaxTime { get => maxTime; set => maxTime = value; }
+    public float Timer { get => timer; set => timer = value; }
+
+    [SerializeField] private TMP_Text totalPointsText;
+    [SerializeField] private ObstaclesSpawnNivel1 obstaclesSpawn;
+    [SerializeField] private TMP_Text totalSavedText;
+
+    private PlayerManagment playerManagment;
+    private UIManager UIManager;
+    private float timer;
+    private float maxTime = 120;
+    private int totalPoints;
+    private bool isPaused;
+
+    private void Start()
+    {
+        obstaclesSpawn.SetSpawning(true);
+    }
+
     void Update()
     {
-        Timer += Time.deltaTime;
+        timer += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused) {
+            if (isPaused)
+            {
                 Resume();
             }
             else
@@ -54,42 +57,42 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
-        winScreen.SetActive(true);
-        Time.timeScale = 0;
-        totalPoints = playerManagment.HP * playerManagment.AlliesRescues * 10;
+        UIManager.winScreen.SetActive(true);
+        obstaclesSpawn.SetSpawning(false);
+        totalPoints = playerManagment.Health * playerManagment.AlliesRescues * 10;
         totalPointsText.text = totalPoints.ToString();
         totalSavedText.text = playerManagment.AlliesRescues.ToString();
-       
     }
 
     public void Lose()
     {
-        loseScreen.SetActive(true);
-        Time.timeScale = 0;
-        totalPoints = playerManagment.HP * playerManagment.AlliesRescues * 10;
+        UIManager.loseScreen.SetActive(true);
+        obstaclesSpawn.SetSpawning(false);
+        totalPoints = playerManagment.Health * playerManagment.AlliesRescues * 10;
         totalPointsText.text = totalPoints.ToString();
         totalSavedText.text = playerManagment.AlliesRescues.ToString();
-        
     }
 
     public void Pause()
     {
-        pauseScreen.SetActive(true);
+        UIManager.pauseScreen.SetActive(true);
         Time.timeScale = 0;
         isPaused = true;
     }
 
     public void Resume()
     {
-        pauseScreen.SetActive(false);
+        UIManager.pauseScreen.SetActive(false);
         Time.timeScale = 1.0f;
         isPaused = false;
     }
 
-    public void GoFinish()
+    public void Restart()
     {
-        Timer = MaxTime;
+        obstaclesSpawn.SetSpawning(true);
+        timer = 0;
+        UIManager.winScreen.SetActive(false);
+        UIManager.loseScreen.SetActive(false);
+        UIManager.pauseScreen.SetActive(false);
     }
-
-
 }

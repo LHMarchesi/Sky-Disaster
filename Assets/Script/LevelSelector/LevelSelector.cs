@@ -1,25 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.VirtualTexturing.Debugging;
-using UnityEngine.SceneManagement;
-using System;
-using Unity.VisualScripting;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using TMPro;
 
 public class LevelSelector : MonoBehaviour
 {
-   
     public GameObject[] LevelButtons;
     public GameObject[] winIcon;
-    
-   
+
     int levelunlocked;
-    
-
-
 
     private void Start()
     {
@@ -46,21 +32,7 @@ public class LevelSelector : MonoBehaviour
         // Desbloqueo de niveles
         for (int i = 0; i < levelunlocked; i++)
         {
-            
-                LevelButtons[i].SetActive(true);
-                  
+            LevelButtons[i].SetActive(true);
         }
     }
-
-    
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            PlayerPrefs.DeleteAll();
-
-        }
-    }
-
 }

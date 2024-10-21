@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 7172981740112216210}
   - component: {fileID: 7172981740112216237}
   - component: {fileID: 1137677742}
-  - component: {fileID: 1137677750}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -119,12 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
-  HP: 0
-  AlliesRescues: 0
-  currentPosition: 0
-  canDie: 0
-  isDead: 0
-  gameManager: {fileID: 0}
+  health: 0
+  alliesRescues: 0
 --- !u!50 &7172981740112216209
 Rigidbody2D:
   serializedVersion: 4
@@ -314,11 +309,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &1137677750
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7172981740112216213}
-  m_Enabled: 1

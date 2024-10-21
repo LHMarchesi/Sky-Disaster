@@ -35,7 +35,6 @@ public class ObstaclesSpawnNivel1 : MonoBehaviour
     private Vector2 spawnTsunamiPosition;
     private Vector2 spawnFinisherPosition;
     private Vector2 FinisherPosition;
-    public GameManager gameManager;
     public bool finisherIsSpawn = false;
 
 
@@ -43,81 +42,71 @@ public class ObstaclesSpawnNivel1 : MonoBehaviour
     {
         // Timepo de spawneo de enemigos
         respawnTimeEnemys = 1f;
-
-        // Timepo de spawneo de aliados con un numero entre 10 y 20s
         respawnTimeAllies = Random.Range(minRespawnTime, maxRespawnTime);
-
-        // Timepo de spawneo de Tsunami con un numero entre 20 y 30s
         respawnTimeTsunami = Random.Range(minTsunamiRespawnTime, maxTsunamiRespawnTime);
-
         respawnTimeEdificio = Random.Range(minEdificioRespawnTime, maxEdificioRespawnTime);
+              
+    }
 
-        // Permite saber si se pueden spawnear
-        canSpawnEnemys = true;
-        canSpawnEdificio = true;
-        canSpawnAllies = true;
-        canSpawnTsunami = true;
-
-        // Inicia las corrutinas que los spawnean
-
-        StartCoroutine(InitialTime());
+    public void SetSpawning(bool value)
+    {
+        if (value)
+        {
+            StartCoroutine(StartSpawning());
+            canSpawnEnemys = true;
+            canSpawnEdificio = true;
+            canSpawnAllies = true;
+            canSpawnTsunami = true;
+        }
+        else
+        {
+            StopAllCoroutines();
+            canSpawnEnemys = false;
+            canSpawnEdificio = false;
+            canSpawnAllies = false;
+            canSpawnTsunami = false;
+        }
     }
 
     private IEnumerator SpawnerEnemys()
     {
         WaitForSeconds wait = new WaitForSeconds(respawnTimeEnemys);
 
-        // Inicializa el AsteroidPrefab en la posision que se le da, y con una rotacion por defecto
         while (canSpawnEnemys)
         {
-           
             Instantiate(AsteroidPrefab, spawnEnemyPosition, Quaternion.identity);
-
             yield return wait;
         }
     }
     private IEnumerator SpawnerEdificio()
     {
         WaitForSeconds wait = new WaitForSeconds(respawnTimeEdificio);
-
-        // Inicializa el EdificioRoto en la posision que se le da, y con una rotacion por defecto
         while (canSpawnEdificio)
         {
-
             Instantiate(EdificioRoto, spawnEdificioPosition, Quaternion.identity);
-
             yield return wait;
         }
     }
     private IEnumerator SpawnerAllies()
     {
         WaitForSeconds wait = new WaitForSeconds(respawnTimeAllies);
-
-        // Inicializa el AlliesPrefab en la posision que se le da, y con una rotacion por defecto
         while (canSpawnAllies)
         {
-
             Instantiate(AlliesPrefab, spawnAlliePosition, Quaternion.identity);
-
             yield return wait;
         }
     }
-
     private IEnumerator SpawnerTsunami()
     {
         WaitForSeconds wait = new WaitForSeconds(respawnTimeTsunami);
-
-        // Inicializa el AsteroidPrefab en la posision que se le da, y con una rotacion por defecto
         while (canSpawnTsunami)
         {
-
             Instantiate(TsunamiPrefab, spawnTsunamiPosition, Quaternion.identity);
-
             yield return wait;
         }
     }
 
-    private IEnumerator InitialTime()
+    public IEnumerator StartSpawning()
     {
         yield return new WaitForSeconds(5);
         StartCoroutine(SpawnerEnemys());
@@ -126,10 +115,6 @@ public class ObstaclesSpawnNivel1 : MonoBehaviour
         StartCoroutine(SpawnerEdificio());
         yield return new WaitForSeconds(10);
         StartCoroutine(SpawnerTsunami());
-
-
-
-
     }
 
     private void Update()
@@ -144,28 +129,23 @@ public class ObstaclesSpawnNivel1 : MonoBehaviour
         spawnFinisherPosition = new Vector2(spawner.position.x, -1);
 
         FinishGame();
-
-        
-
     }
 
 
     private void FinishGame()
     {
-        if (gameManager.Timer >= 120 && canSpawnFinisher)
+        if (GameManager.instance.Timer >= 120 && canSpawnFinisher)
         {
             canSpawnEnemys = false;
             canSpawnEdificio = false;
             canSpawnAllies = false;
             canSpawnTsunami = false;
 
-            
             Instantiate(Finisher, spawnFinisherPosition, Quaternion.identity);
-            
-            canSpawnFinisher = false;
 
-            
+            StopAllCoroutines();
+
+            canSpawnFinisher = false;
         }
     }
-
 }

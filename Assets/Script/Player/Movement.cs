@@ -16,10 +16,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        // Busca el componente Animator
         animator = gameObject.GetComponent<Animator>();
-
-        // Busca el componente Rigidbody
         playerRB = GetComponent<Rigidbody2D>();
     }
 
@@ -65,7 +62,6 @@ public class Movement : MonoBehaviour
         playerRB.MovePosition(playerRB.position + moveInput * speed * Time.fixedDeltaTime);   
     }
 
-
     public void InvertDirection()
     {
         if (!inverted)
@@ -75,8 +71,6 @@ public class Movement : MonoBehaviour
         }
         currentTime = 0;
     }
-
-
 
     void RecoverDirection()
     {
