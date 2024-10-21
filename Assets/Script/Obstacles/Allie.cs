@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class RescuesManagment : MonoBehaviour
+public class Allie : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private Transform Spawn;
 
     void Update()
     {

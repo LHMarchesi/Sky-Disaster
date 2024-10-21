@@ -655,6 +655,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!1 &179592341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 179592342}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &179592342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179592341}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.7, y: -4.5, z: -0.23953755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &209067331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,13 +1835,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07714dd0457fa7445bcc2bc5c4cbcc4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AsteroidPrefab: {fileID: 6807391968706400493, guid: b88d4347a86036c4ab2f21c1393be801, type: 3}
   AlliesPrefab: {fileID: 3343894781443034931, guid: 9edc9cfe0cf7be348b05944c6e877527, type: 3}
   TsunamiPrefab: {fileID: 502216907512633394, guid: 56c7be362f05f914ea007f23564dbc47, type: 3}
   EdificioRoto: {fileID: 3294509161667705458, guid: 360284bab7ee2d04cbce0ba0f91c6eed, type: 3}
   Finisher: {fileID: 3213925683203276230, guid: 4ab8b4946cdeb134591eb7c7ed2ac9dc, type: 3}
   spawner: {fileID: 560756470}
   finisherIsSpawn: 0
+  asteroidPool: {fileID: 0}
 --- !u!4 &560756470
 Transform:
   m_ObjectHideFlags: 0
@@ -6301,6 +6332,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9edc9cfe0cf7be348b05944c6e877527, type: 3}
+--- !u!1 &1960321409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3343894781443034931, guid: 9edc9cfe0cf7be348b05944c6e877527, type: 3}
+  m_PrefabInstance: {fileID: 1960321408}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1960321410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960321409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5357c28cd3f5bc4184505010b7badbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  Spawn: {fileID: 179592342}
 --- !u!1001 &1987364816
 PrefabInstance:
   m_ObjectHideFlags: 0

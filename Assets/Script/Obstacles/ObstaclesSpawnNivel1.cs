@@ -7,7 +7,6 @@ using UnityEngine.Rendering;
 
 public class ObstaclesSpawnNivel1 : MonoBehaviour
 {
-    [SerializeField] private GameObject AsteroidPrefab;
     [SerializeField] private GameObject AlliesPrefab;
     [SerializeField] private GameObject TsunamiPrefab;
     [SerializeField] private GameObject EdificioRoto;
@@ -29,7 +28,7 @@ public class ObstaclesSpawnNivel1 : MonoBehaviour
     private int minEdificioRespawnTime = 20;
     private int maxEdificioRespawnTime = 30;
     private int randomY;
-    private Vector2 spawnEnemyPosition;
+    private Vector2 asteroidRndPos;
     private Vector2 spawnAlliePosition;
     private Vector2 spawnEdificioPosition;
     private Vector2 spawnTsunamiPosition;
@@ -37,6 +36,8 @@ public class ObstaclesSpawnNivel1 : MonoBehaviour
     private Vector2 FinisherPosition;
     public bool finisherIsSpawn = false;
 
+
+    [SerializeField] AsteroidPool asteroidPool;
 
     private void Start()
     {
@@ -74,7 +75,7 @@ public class ObstaclesSpawnNivel1 : MonoBehaviour
 
         while (canSpawnEnemys)
         {
-            Instantiate(AsteroidPrefab, spawnEnemyPosition, Quaternion.identity);
+            asteroidPool.GetFromPool(asteroidRndPos, new Vector2(-200, -150));
             yield return wait;
         }
     }
@@ -122,7 +123,7 @@ public class ObstaclesSpawnNivel1 : MonoBehaviour
         // Da un numero random entre 0 y 15
         randomY = Random.Range(0, 15);
         // Posiocion de el spawn de los enemigos y los aliados
-        spawnEnemyPosition = new Vector2(spawner.position.x, randomY);
+        asteroidRndPos = new Vector2(spawner.position.x, randomY);
         spawnEdificioPosition = new Vector2(spawner.position.x + 5, 0.14f);
         spawnAlliePosition = new Vector3(spawner.position.x - 3, -4.1f, 9);
         spawnTsunamiPosition = new Vector2(spawner.position.x + 10, 0);

@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public float Timer { get => timer; set => timer = value; }
 
     [SerializeField] private TMP_Text totalPointsText;
-    [SerializeField] private ObstaclesSpawnNivel1 obstaclesSpawn;
+    [SerializeField] private ManageSpawning manageSpawning;
     [SerializeField] private TMP_Text totalSavedText;
 
     private PlayerManagment playerManagment;
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        obstaclesSpawn.SetSpawning(true);
+        manageSpawning.SetSpawning(true);
     }
 
     void Update()
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         UIManager.instance.winScreen.SetActive(true);
-        obstaclesSpawn.SetSpawning(false);
+        manageSpawning.SetSpawning(false);
         totalPoints = playerManagment.Health * playerManagment.AlliesRescues * 10;
         totalPointsText.text = totalPoints.ToString();
         totalSavedText.text = playerManagment.AlliesRescues.ToString();
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     public void Lose()
     {
         UIManager.instance.loseScreen.SetActive(true);
-        obstaclesSpawn.SetSpawning(false);
+        manageSpawning.SetSpawning(false);
         totalPoints = playerManagment.Health * playerManagment.AlliesRescues * 10;
         totalPointsText.text = totalPoints.ToString();
         totalSavedText.text = playerManagment.AlliesRescues.ToString();
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        obstaclesSpawn.SetSpawning(true);
+        manageSpawning.SetSpawning(true);
         timer = 0;
         UIManager.instance.winScreen.SetActive(false);
         UIManager.instance.loseScreen.SetActive(false);
