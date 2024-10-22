@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class Allie : MonoBehaviour
+public class Allie : Obstacle
 {
-    [SerializeField] private float speed;
-    [SerializeField] private Transform Spawn;
+    [SerializeField] private int _speed;
+    [SerializeField] private Vector2 _spawnPosition;
+    public override int speed { get => _speed; set => _speed = value; }
+    public override Vector2 SpawnPosition { get => _spawnPosition; set => _spawnPosition = value; }
 
     void Update()
     {
@@ -16,5 +18,10 @@ public class Allie : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public override void Initialize()
+    {
+        //Sfx?
     }
 }

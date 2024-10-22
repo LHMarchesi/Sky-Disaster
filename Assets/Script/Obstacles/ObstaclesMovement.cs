@@ -1,6 +1,4 @@
 using UnityEngine;
-
-
 public class ObstaclesMovement : MonoBehaviour
 {
     public float speedX;   

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3213925683203276229}
   - component: {fileID: 4286916239062815150}
   - component: {fileID: 6237714091104571449}
-  - component: {fileID: -1904361578259188096}
   - component: {fileID: 327864527157909231}
   m_Layer: 0
   m_Name: Finisher
@@ -126,21 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869052ecac984844c8a514c7d0cb429b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finisher: {fileID: 3213925683203276230}
---- !u!114 &-1904361578259188096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3213925683203276230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a372b740ad2c3024f80b60e0fe81d7cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedX: -2
-  speedY: 0
+  _speed: 3
+  _spawnPosition: {x: 15, y: -1.58}
+  endPosition: {x: 2.93, y: -1.58}
 --- !u!50 &327864527157909231
 Rigidbody2D:
   serializedVersion: 4

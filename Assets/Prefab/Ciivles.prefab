@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3343894781443034927}
   - component: {fileID: 3343894781443034930}
   - component: {fileID: 6497754739146270239}
+  - component: {fileID: 892824167194143300}
   m_Layer: 0
   m_Name: Ciivles
   m_TagString: Allie
@@ -133,3 +134,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.2617836, y: 4.7437744}
   m_EdgeRadius: 0
+--- !u!114 &892824167194143300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3343894781443034931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5357c28cd3f5bc4184505010b7badbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 2
+  _spawnPosition: {x: 11, y: -3}

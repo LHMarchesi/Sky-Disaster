@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1628971070277184426}
   - component: {fileID: 3298234781393123360}
   - component: {fileID: 5177912816177659370}
-  - component: {fileID: 3009733696897448362}
+  - component: {fileID: 4477091837858631823}
   m_Layer: 0
   m_Name: EddificioRoto 1
   m_TagString: Dead
@@ -161,7 +161,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.7207932, y: 6.0217743}
   m_EdgeRadius: 0
---- !u!114 &3009733696897448362
+--- !u!114 &4477091837858631823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,8 +170,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3294509161667705458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a372b740ad2c3024f80b60e0fe81d7cd, type: 3}
+  m_Script: {fileID: 11500000, guid: d5e4b40ba88ae9b4d825255bdd6f19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedX: -20
-  speedY: 0
+  _speed: 3
+  _spawnPosition: {x: 11, y: 0.5}

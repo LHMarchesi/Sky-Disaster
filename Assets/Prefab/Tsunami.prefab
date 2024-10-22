@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 8055503971216799985}
   - component: {fileID: 6107969453961028281}
   - component: {fileID: 187372834448967961}
-  - component: {fileID: 2411272355751837767}
   - component: {fileID: 5975247637463345172}
   - component: {fileID: -5970242039025705507}
   - component: {fileID: -1770162574056249018}
   - component: {fileID: 1268166765784547998}
+  - component: {fileID: -1880209552396776174}
   m_Layer: 0
   m_Name: Tsunami
   m_TagString: Dead
@@ -116,20 +116,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.4085557, y: 5.99221}
   m_EdgeRadius: 0
---- !u!114 &2411272355751837767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502216907512633394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a372b740ad2c3024f80b60e0fe81d7cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedX: -70
-  speedY: 0
 --- !u!50 &5975247637463345172
 Rigidbody2D:
   serializedVersion: 4
@@ -171,6 +157,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &-1770162574056249018
 AudioSource:
   m_ObjectHideFlags: 0
@@ -293,3 +280,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.1120896, y: 3.5583725}
   m_EdgeRadius: 0
+--- !u!114 &-1880209552396776174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502216907512633394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac77bae10b3b6140acc9172e2327c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 4
+  _spawnPosition: {x: 16, y: 0}

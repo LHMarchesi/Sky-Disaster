@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1183754772423117474}
   - component: {fileID: 8141433081890875798}
-  - component: {fileID: -7294471204196214133}
   - component: {fileID: 8121321241601003394}
   - component: {fileID: 5411595176832300539}
   - component: {fileID: 1461793907061851058}
@@ -88,20 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-7294471204196214133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7809648390083638748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a372b740ad2c3024f80b60e0fe81d7cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedX: -2
-  speedY: 0
 --- !u!114 &8121321241601003394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869052ecac984844c8a514c7d0cb429b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finisher: {fileID: 7809648390083638748}
+  _speed: 0
+  _spawnPosition: {x: 0, y: 0}
+  endPosition: {x: 0, y: 0}
 --- !u!50 &5411595176832300539
 Rigidbody2D:
   serializedVersion: 4

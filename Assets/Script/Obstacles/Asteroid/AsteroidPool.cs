@@ -3,12 +3,27 @@ using UnityEngine.Pool;
 
 public class AsteroidPool : MonoBehaviour
 {
-    ObjectPool<Asteroid> projectilePool;
-    [SerializeField]private Asteroid projectilePrefab;
+    ObjectPool<Asteroid> asteroidoPool;
+    [SerializeField]private Asteroid asteroid;
 
     private void Awake()
     {
-        projectilePool = new ObjectPool<Asteroid>(CreatePoolItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject, false, 10, 100);
+        asteroidoPool = new ObjectPool<Asteroid>(CreatePoolItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject, false, 10, 100);
+    }
+
+    public void GetFromPool(Vector2 pos, Vector2 force)
+    {
+        Asteroid projectileInstance = asteroidoPool.Get();
+        projectileInstance.transform.SetPositionAndRotation(pos, Quaternion.identity);
+        projectileInstance.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Force);
+    }
+
+    private Asteroid CreatePoolItem()
+    {
+        Asteroid asteroid = Instantiate(this.asteroid);
+        asteroid.gameObject.SetActive(false);
+        asteroid.pool = asteroidoPool;
+        return asteroid;
     }
 
     private void OnDestroyPoolObject(Asteroid asteroid)
@@ -26,20 +41,5 @@ public class AsteroidPool : MonoBehaviour
         asteroid.gameObject.SetActive(true);
     }
 
-    private Asteroid CreatePoolItem()
-    {
-        Asteroid asteroid = Instantiate(projectilePrefab);
-        asteroid.gameObject.SetActive(false);
-        asteroid.pool = projectilePool;
-        return asteroid;
-    }
-
-    public void GetFromPool(Vector2 pos, Vector2 force)
-    {
-        Asteroid projectileInstance = projectilePool.Get();
-
-        projectileInstance.transform.SetPositionAndRotation(pos, Quaternion.identity);
-
-        projectileInstance.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Force);
-    }
+   
 }

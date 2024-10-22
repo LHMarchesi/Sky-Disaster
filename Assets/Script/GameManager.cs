@@ -4,13 +4,23 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public float MaxTime { get => maxTime; set => maxTime = value; }
+    public float Timer { get => timer; set => timer = value; }
 
+    [SerializeField] private TMP_Text totalPointsText;
+    [SerializeField] private ManageSpawning manageSpawning;
+    [SerializeField] private TMP_Text totalSavedText;
+
+    private float maxTime;
+    private PlayerManagment playerManagment;
+    private float timer;
+    private int totalPoints;
+    private bool isPaused;
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -20,20 +30,7 @@ public class GameManager : MonoBehaviour
         playerManagment = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManagment>();
     }
 
-    public float MaxTime { get => maxTime; set => maxTime = value; }
-    public float Timer { get => timer; set => timer = value; }
-
-    [SerializeField] private TMP_Text totalPointsText;
-    [SerializeField] private ManageSpawning manageSpawning;
-    [SerializeField] private TMP_Text totalSavedText;
-
-    private PlayerManagment playerManagment;
-    private float timer;
-    private float maxTime = 120;
-    private int totalPoints;
-    private bool isPaused;
-
-    private void Start()
+    private void OnEnable()
     {
         manageSpawning.SetSpawning(true);
     }
@@ -88,7 +85,6 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        manageSpawning.SetSpawning(true);
         timer = 0;
         UIManager.instance.winScreen.SetActive(false);
         UIManager.instance.loseScreen.SetActive(false);
