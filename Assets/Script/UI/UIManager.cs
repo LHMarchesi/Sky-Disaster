@@ -15,10 +15,9 @@ public class UIManager : MonoBehaviour
     public Sprite fulledHeart;
     public Sprite emptyHeart;
 
-    public GameObject winScreen;
-    public GameObject loseScreen;
+    public UiScreen winScreen;
+    public UiScreen loseScreen;
     public GameObject pauseScreen;
-
 
     private void Awake()
     {
@@ -55,10 +54,4 @@ public class UIManager : MonoBehaviour
 
         progessBar.UpdateProgess(GameManager.instance.Timer, GameManager.instance.MaxTime);
     }
-
-    public void UpdateUi()
-    {
-
-    }
-
 }
