@@ -1025,7 +1025,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2129181985}
         m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: NextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2434,6 +2434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b84c8f48d1d7744a18445f2371f35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSceneLoad: 0
 --- !u!114 &2119536284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2524,3 +2525,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b84c8f48d1d7744a18445f2371f35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSceneLoad: 0

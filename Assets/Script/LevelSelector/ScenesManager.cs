@@ -9,11 +9,7 @@ public class ScenesManager : MonoBehaviour
         nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
-    public void PlayGame()
-    {
-        SceneManager.LoadScene(1);
-    }
-
+   
     public void levelSelectorMenu()
     {
         SceneManager.LoadScene(1);
@@ -44,6 +40,20 @@ public class ScenesManager : MonoBehaviour
         GameManager.instance.Restart();
         int actualScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(actualScene);
+    }
+
+    public void NextScene()
+    {
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        currentIndex++;
+
+        if (currentIndex > 2)
+        {
+            currentIndex = 0;
+            SceneManager.LoadScene(currentIndex);
+        }
+        else
+            SceneManager.LoadScene(currentIndex);
     }
 
     public void GoMenu()

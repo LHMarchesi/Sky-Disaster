@@ -147,7 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5357c28cd3f5bc4184505010b7badbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1480092127}
+  _speed: 3
+  _spawnPosition: {x: 12, y: -3.463814}
 --- !u!1 &7188091344644100923
 GameObject:
   m_ObjectHideFlags: 0

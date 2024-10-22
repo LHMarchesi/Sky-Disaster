@@ -168,6 +168,90 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obstacle: {fileID: -1880209552396776174, guid: 56c7be362f05f914ea007f23564dbc47, type: 3}
+--- !u!1 &45866691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 45866693}
+  - component: {fileID: 45866692}
+  m_Layer: 0
+  m_Name: Frame 14
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &45866692
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45866691}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 818649758f8e7704e879b92f1463eb99, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.3, y: 0.57}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &45866693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45866691}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 258.98398, y: 486.97195, z: -9719.999}
+  m_LocalScale: {x: 214.3724, y: 139.31999, z: 139.31999}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 960888773}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &55568401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1331,7 @@ RectTransform:
   - {fileID: 873618358}
   - {fileID: 825220331}
   m_Father: {fileID: 960888773}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1866,6 +1950,7 @@ MonoBehaviour:
   totalPointsText: {fileID: 123074729503599432, guid: 8134a89d4cabc1a42afb97b2426c2956, type: 3}
   manageSpawning: {fileID: 1752416171}
   totalSavedText: {fileID: 5555519461185684411, guid: ddaa7b83d0fc7d840ba3a8b6a3e89dd7, type: 3}
+  maxTime: 120
 --- !u!1 &567431027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2690,6 +2775,7 @@ RectTransform:
   - {fileID: 1200257971}
   - {fileID: 1668394129}
   - {fileID: 1427285645}
+  - {fileID: 45866693}
   - {fileID: 449612380}
   - {fileID: 1622642816}
   - {fileID: 1000546853}
@@ -2742,7 +2828,7 @@ RectTransform:
   - {fileID: 1627409896}
   - {fileID: 1659061903}
   m_Father: {fileID: 960888773}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3661,9 +3747,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1000546857}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: onLevelCompleted
+      - m_Target: {fileID: 1000546856}
+        m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
+        m_MethodName: NextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4573,7 +4659,7 @@ RectTransform:
   - {fileID: 1867226041}
   - {fileID: 83062269}
   m_Father: {fileID: 960888773}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4925,7 +5011,7 @@ RectTransform:
   - {fileID: 1322507692}
   - {fileID: 832199761}
   m_Father: {fileID: 960888773}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5474,6 +5560,10 @@ MonoBehaviour:
   brokenBuildingFactory: {fileID: 1975663486}
   allieFactory: {fileID: 1554114017}
   finisherFactory: {fileID: 1192273926}
+  timeBetweenAsteroids: 3
+  timeBetweenTsunamis: 13
+  timeBetweenBrokenBuilding: 9
+  timeBetweenAllie: 7
 --- !u!4 &1752416172
 Transform:
   m_ObjectHideFlags: 0

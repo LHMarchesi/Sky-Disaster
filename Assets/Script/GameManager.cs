@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text totalPointsText;
     [SerializeField] private ManageSpawning manageSpawning;
     [SerializeField] private TMP_Text totalSavedText;
+    [SerializeField] private float maxTime;
 
-    private float maxTime;
     private PlayerManagment playerManagment;
     private float timer;
     private int totalPoints;

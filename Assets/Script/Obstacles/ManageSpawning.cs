@@ -12,6 +12,11 @@ public class ManageSpawning : MonoBehaviour
     [SerializeField] ObstacleFactory allieFactory;
     [SerializeField] ObstacleFactory finisherFactory;
 
+    [SerializeField] float timeBetweenAsteroids;
+    [SerializeField] float timeBetweenTsunamis;
+    [SerializeField] float timeBetweenBrokenBuilding;
+    [SerializeField] float timeBetweenAllie;
+
     public bool CanSpawn { get; private set; }
 
     private void Start()
@@ -27,10 +32,10 @@ public class ManageSpawning : MonoBehaviour
         StartCoroutine(AsteroidSpawn());
         StartCoroutine(AlliesSpawn());
 
-        yield return new WaitForSeconds(30f); 
+        yield return new WaitForSeconds(30f);
         StartCoroutine(BrokenBuildingSpawn());
 
-        yield return new WaitForSeconds(10f); 
+        yield return new WaitForSeconds(10f);
         StartCoroutine(TsunamiSpawn());
         yield return new WaitUntil(() => GameManager.instance.Timer >= GameManager.instance.MaxTime);
         finisherFactory.CreateObstacle();
@@ -45,13 +50,12 @@ public class ManageSpawning : MonoBehaviour
 
     private void StopAllSpawning()
     {
-        StopAllCoroutines(); 
+        StopAllCoroutines();
     }
 
     private IEnumerator AsteroidSpawn()
     {
-        float asteroidRespawnTime = Random.Range(1, 3);
-        WaitForSeconds wait = new WaitForSeconds(asteroidRespawnTime);
+        WaitForSeconds wait = new WaitForSeconds(timeBetweenAsteroids);
         while (true)
         {
             Vector2 asteroidRndPos = new Vector2(Random.Range(-2, 14), Random.Range(5, 10));
@@ -59,22 +63,9 @@ public class ManageSpawning : MonoBehaviour
             yield return wait;
         }
     }
-
-    private IEnumerator BrokenBuildingSpawn()
-    {
-        float brokenBuildingRespawnTime = Random.Range(12, 15);
-        WaitForSeconds wait = new WaitForSeconds(brokenBuildingRespawnTime);
-        while (true)
-        {
-            brokenBuildingFactory.CreateObstacle();
-            yield return wait;
-        }
-    }
-
     private IEnumerator AlliesSpawn()
     {
-        float alliesRespawnTime = Random.Range(5, 10);
-        WaitForSeconds wait = new WaitForSeconds(alliesRespawnTime);
+        WaitForSeconds wait = new WaitForSeconds(timeBetweenAllie);
         while (true)
         {
             allieFactory.CreateObstacle();
@@ -84,11 +75,20 @@ public class ManageSpawning : MonoBehaviour
 
     private IEnumerator TsunamiSpawn()
     {
-        float tsunamiRespawnTime = Random.Range(10, 20);
-        WaitForSeconds wait = new WaitForSeconds(tsunamiRespawnTime);
+        WaitForSeconds wait = new WaitForSeconds(timeBetweenTsunamis);
         while (true)
         {
             tsunamiFactory.CreateObstacle();
+            yield return wait;
+        }
+    }
+
+    private IEnumerator BrokenBuildingSpawn()
+    {
+        WaitForSeconds wait = new WaitForSeconds(timeBetweenBrokenBuilding);
+        while (true)
+        {
+            brokenBuildingFactory.CreateObstacle();
             yield return wait;
         }
     }
