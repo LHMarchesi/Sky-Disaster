@@ -6,6 +6,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class ManageSpawning : MonoBehaviour
 {
     [SerializeField] AsteroidPool asteroidPool;
+    [SerializeField] AsteroidsScriptable asteroidData;
 
     [SerializeField] ObstacleFactory tsunamiFactory;
     [SerializeField] ObstacleFactory brokenBuildingFactory;
@@ -59,7 +60,7 @@ public class ManageSpawning : MonoBehaviour
         while (true)
         {
             Vector2 asteroidRndPos = new Vector2(Random.Range(-2, 14), Random.Range(5, 10));
-            asteroidPool.GetFromPool(asteroidRndPos, new Vector2(-200, -150));
+            asteroidPool.GetFromPool(asteroidRndPos, new Vector2(asteroidData.speedX, asteroidData.speedY)); 
             yield return wait;
         }
     }
