@@ -1981,6 +1981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidPool: {fileID: 1031751960}
+  asteroidData: {fileID: 11400000, guid: d4125e492ffbd254382c63ea84c8bfc5, type: 2}
   tsunamiFactory: {fileID: 996438158}
   brokenBuildingFactory: {fileID: 1645540662}
   allieFactory: {fileID: 238763668}
