@@ -40,6 +40,13 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        ManageHealUI();
+
+        progessBar.UpdateProgess(GameManager.instance.Timer, GameManager.instance.MaxTime);
+    }
+
+    private void ManageHealUI()
+    {
         textCiviles.text = playerManagment.AlliesRescues.ToString();
 
         foreach (Image img in hearts)
@@ -51,7 +58,24 @@ public class UIManager : MonoBehaviour
         {
             hearts[i].sprite = fulledHeart;
         }
+    }
 
-        progessBar.UpdateProgess(GameManager.instance.Timer, GameManager.instance.MaxTime);
+    public void ShowLoseScreen(int points, int saved)
+    {
+        loseScreen.gameObject.SetActive(true);
+        loseScreen.UpdateScreen(points, saved);
+    }
+
+    public void ShowWinScreen(int points, int saved)
+    {
+        winScreen.gameObject.SetActive(true);
+        winScreen.UpdateScreen(points, saved);
+    }
+
+    public void Reset()
+    {
+        UIManager.instance.winScreen.gameObject.SetActive(false);
+        UIManager.instance.loseScreen.gameObject.SetActive(false);
+        UIManager.instance.pauseScreen.SetActive(false);
     }
 }

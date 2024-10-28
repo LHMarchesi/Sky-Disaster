@@ -51,18 +51,16 @@ public class GameManager : MonoBehaviour
     {
         manageSpawning.SetSpawning(false);
 
-        UIManager.instance.winScreen.gameObject.SetActive(true);
         int totalPoints = playerManagment.Health * playerManagment.AlliesRescues * 10;
-        UIManager.instance.winScreen.UpdateScreen(totalPoints, playerManagment.AlliesRescues);
+        UIManager.instance.ShowWinScreen(totalPoints, playerManagment.AlliesRescues);
     }
 
     public void Lose()
     {
         manageSpawning.SetSpawning(false);
 
-        UIManager.instance.loseScreen.gameObject.SetActive(true);
         int totalPoints = playerManagment.Health * playerManagment.AlliesRescues * 10;
-        UIManager.instance.loseScreen.UpdateScreen(totalPoints, playerManagment.AlliesRescues);
+        UIManager.instance.ShowLoseScreen(totalPoints, playerManagment.AlliesRescues);
     }
 
     public void Pause()
@@ -82,8 +80,6 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         timer = 0;
-        UIManager.instance.winScreen.gameObject.SetActive(false);
-        UIManager.instance.loseScreen.gameObject.SetActive(false);
-        UIManager.instance.pauseScreen.SetActive(false);
+        UIManager.instance.Reset();
     }
 }
