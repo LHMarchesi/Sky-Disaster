@@ -41,7 +41,6 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         ManageHealUI();
-
         progessBar.UpdateProgess(GameManager.instance.Timer, GameManager.instance.MaxTime);
     }
 

@@ -4,17 +4,17 @@ public class PlayerObserver : MonoBehaviour
 {
     void Start()
     {
-        PlayerActions.OnDead += Lose;
-        PlayerActions.OnWin += Win;
+        PlayerActions.OnDead += OnLose;
+        PlayerActions.OnWin += OnWin;
     }
 
     void OnDisable()
     {
-        PlayerActions.OnDead -= Lose;
-        PlayerActions.OnWin -= Win;
+        PlayerActions.OnDead -= OnLose;
+        PlayerActions.OnWin -= OnWin;
     }
 
-    private void Lose()
+    private void OnLose()
     {
         GameManager.instance.Lose();
         StopAllCoroutines();
@@ -22,7 +22,7 @@ public class PlayerObserver : MonoBehaviour
         Destroy(gameObject);
     }
     
-    private void Win()
+    private void OnWin()
     {
         GameManager.instance.Win();
         StopAllCoroutines();
