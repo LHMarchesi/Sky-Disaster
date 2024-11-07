@@ -2,25 +2,22 @@ using UnityEngine;
 using System;
 public class PlayerActions : MonoBehaviour
 {
-    public static event Action OnDead;
     public static event Action OnWin;
+    public static event Action OnLevelCompleted;
     PlayerManagment playerManagment;
+    PlayerHealth playerHealth;
 
     private void Awake()
     {
         playerManagment = gameObject.GetComponent<PlayerManagment>();
+        playerHealth = gameObject.GetComponent<PlayerHealth>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Dead") && playerManagment.CanDie)
         {
-            playerManagment.GetDamage();
-            
-            if (playerManagment.Health <= 0)
-            {
-                OnDead?.Invoke();
-            }
+            playerHealth.GetDamage();
         }
 
         if (collision.CompareTag("Allie"))
@@ -35,4 +32,6 @@ public class PlayerActions : MonoBehaviour
             playerManagment.LevelCompleted();
         }
     }
+
+    // Implementar Strategy IInteractuable
 }

@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     private ProgessBar progessBar;
     private PlayerManagment playerManagment;
+    private PlayerHealth playerHealth;
     public TextMeshProUGUI textCiviles;
     public Image[] hearts;
     public Sprite fulledHeart;
@@ -31,6 +32,7 @@ public class UIManager : MonoBehaviour
         }
         progessBar = GetComponentInChildren<ProgessBar>();
         playerManagment = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManagment>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     private void Start()
@@ -53,7 +55,7 @@ public class UIManager : MonoBehaviour
             img.sprite = emptyHeart;
         }
 
-        for (int i = 0; i < playerManagment.Health; i++)
+        for (int i = 0; i < playerHealth.Health; i++)
         {
             hearts[i].sprite = fulledHeart;
         }

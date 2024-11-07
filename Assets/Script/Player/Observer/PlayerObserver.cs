@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class PlayerObserver : MonoBehaviour
 {
+    PlayerManagment playerManagment;
+    private void Awake()
+    {
+        playerManagment = GetComponent<PlayerManagment>();
+    }
+
     void Start()
     {
-        PlayerActions.OnDead += OnLose;
+        PlayerHealth.OnGetDamage += playerManagment.RespawnTime;
+        PlayerHealth.OnDead += OnLose;
         PlayerActions.OnWin += OnWin;
     }
 
     void OnDisable()
     {
-        PlayerActions.OnDead -= OnLose;
+        PlayerHealth.OnGetDamage -= playerManagment.RespawnTime;
+        PlayerHealth.OnDead -= OnLose;
         PlayerActions.OnWin -= OnWin;
     }
 

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ManageSpawning manageSpawning;
     [SerializeField] private float maxTime;
     private PlayerManagment playerManagment;
+    private PlayerHealth playerHealth;
 
     private float timer;
     private bool isPaused;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         playerManagment = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManagment>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     private void OnEnable()
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour
     {
         manageSpawning.SetSpawning(false);
 
-        int totalPoints = playerManagment.Health * playerManagment.AlliesRescues * 10;
+        int totalPoints = playerHealth.Health * playerManagment.AlliesRescues * 10;
         UIManager.instance.ShowWinScreen(totalPoints, playerManagment.AlliesRescues);
     }
 
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour
     {
         manageSpawning.SetSpawning(false);
 
-        int totalPoints = playerManagment.Health * playerManagment.AlliesRescues * 10;
+        int totalPoints = playerHealth.Health * playerManagment.AlliesRescues * 10;
         UIManager.instance.ShowLoseScreen(totalPoints, playerManagment.AlliesRescues);
     }
 
