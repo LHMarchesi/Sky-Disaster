@@ -3,7 +3,7 @@ using System;
 public class PlayerActions : MonoBehaviour
 {
     public static event Action OnWin;
-    public static event Action OnLevelCompleted;
+    //public static event Action OnLevelCompleted;
     PlayerManagment playerManagment;
     PlayerHealth playerHealth;
 

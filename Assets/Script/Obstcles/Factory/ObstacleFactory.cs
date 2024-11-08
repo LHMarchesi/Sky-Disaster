@@ -8,6 +8,10 @@ public class ObstacleFactory : MonoBehaviour
 
     public Obstacle CreateObstacle()
     {
-        return Instantiate(_obstacle, _obstacle.SpawnPosition, Quaternion.identity);
+        Obstacle newObstacle = Instantiate(_obstacle, Vector2.zero, Quaternion.identity);
+        newObstacle.Initialize();
+        newObstacle.transform.position = newObstacle.SpawnPosition;
+
+        return newObstacle;
     }
 }

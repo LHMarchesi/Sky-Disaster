@@ -12,7 +12,6 @@ public class PlayerManagment : MonoBehaviour
     private int levelcompleted = 0;
     private float currentPosition;
     private bool canDie;
-    private bool isDead;
     private Animator animator;
     private PlayerActions playerActions;
     private PlayerHealth playerHealth;
@@ -27,7 +26,6 @@ public class PlayerManagment : MonoBehaviour
     {
         alliesRescues = 0;
         CanDie = true;
-        isDead = false;
     }
 
     public void AllieSaved()
@@ -55,7 +53,6 @@ public class PlayerManagment : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         CanDie = true;
-        isDead = false;
         animator.SetBool("Dead", false);
     }
 }
