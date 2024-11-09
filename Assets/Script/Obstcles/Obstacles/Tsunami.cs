@@ -4,7 +4,7 @@ public class Tsunami : Obstacle
 {
     [SerializeField] private int _speed;
     [SerializeField] private Vector2 _spawnPosition;
-    private float timeoutDelay =2f;
+    private float timeoutDelay = 10f;
 
     public override int speed { get => _speed; set => _speed = value; }
     public override Vector2 SpawnPosition { get => _spawnPosition; set => _spawnPosition = value; }

@@ -8,10 +8,10 @@ enum States
 
 public class EnemyAlien : Obstacle
 {
-    [SerializeField] private int Attack0speed;
-    [SerializeField] private int Attack1speed;
+    [SerializeField] private int attack0speed;
+    [SerializeField] private GameObject warningSprite;
+    [SerializeField] private int attack1speed;
     [SerializeField] private float rayInterval;
-    private int _speed;
     private Vector2 _spawnPosition;
     private float nextRayTime;
     public override int speed { get => _speed; set => _speed = value; }
@@ -20,8 +20,10 @@ public class EnemyAlien : Obstacle
     private States currentState;
     private Animator animator;
 
+    private int _speed;
     private bool isPositionSet;
-    private float timeoutDelay = 2f;
+    private float timeoutDelay = 15f;
+    private float warningDuration = 1f;
 
     private void Awake()
     {
@@ -36,13 +38,16 @@ public class EnemyAlien : Obstacle
         switch (currentState)
         {
             case States.attack0:
-                _spawnPosition = new Vector2(15f, 0.6f);
+                _spawnPosition = new Vector2(25f, 0.6f);
                 transform.position = _spawnPosition;
+                ShowWarning();
                 break;
+
             case States.attack1:
                 _spawnPosition = new Vector2(15f, 4f);
                 transform.position = _spawnPosition;
                 break;
+
             default:
                 break;
         }
@@ -63,21 +68,31 @@ public class EnemyAlien : Obstacle
         }
     }
 
+    private void ShowWarning()
+    {
+        Vector2 offset = new Vector2(-18, 0);
+        warningSprite.transform.position = _spawnPosition + offset;
+        warningSprite.gameObject.transform.SetParent(null);
+        warningSprite.SetActive(true);
+
+        Invoke("HideWarning", warningDuration);
+    }
+
     private void ChooseRandomState()
     {
-        List<States> availableStates = new List<States> { States.attack0, States.attack1};
+        List<States> availableStates = new List<States> { States.attack0, States.attack1 };
         currentState = availableStates[Random.Range(0, availableStates.Count)];
     }
 
     private void Attack0()
     {
-        _speed = Attack0speed;
+        _speed = attack0speed;
         transform.Translate(Vector3.left * speed * Time.deltaTime);
     }
 
     private void Attack1()
     {
-        _speed = Attack1speed;
+        _speed = attack1speed;
         transform.Translate(Vector3.left * speed * Time.deltaTime);
         if (Time.time >= nextRayTime)
         {
@@ -88,6 +103,18 @@ public class EnemyAlien : Obstacle
         {
             animator.SetBool("Attack1", false);
         }
+    }
+
+    private void HideWarning()
+    {
+        Debug.Log("hideWarning");
+        warningSprite.SetActive(false);
+        StartAttack();
+    }
+
+    private void StartAttack()
+    {
+        Update();
     }
 
     private void Deactivate()
