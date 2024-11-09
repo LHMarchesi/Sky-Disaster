@@ -60,3 +60,6 @@ TagManager:
   - name: Allies
     uniqueID: 2116932173
     locked: 0
+  - name: UI
+    uniqueID: 2977377329
+    locked: 0

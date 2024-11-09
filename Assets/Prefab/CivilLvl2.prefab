@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8715638297352819743}
   - component: {fileID: 2268247034832697725}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: CivilLvl2
   m_TagString: Allie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

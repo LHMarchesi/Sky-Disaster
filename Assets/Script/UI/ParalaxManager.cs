@@ -7,7 +7,7 @@ public class ParalaxManager : MonoBehaviour
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime);
 
-        if (transform.position.x < -63)
+        if (transform.position.x < -62)
         {
             this.transform.position = new Vector3(28, transform.position.y, transform.position.z);
         }

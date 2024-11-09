@@ -1,15 +1,15 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
 {
-    public int nextSceneLoad;
+    private int nextSceneLoad;
     private void Start()
     {
         nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
-   
     public void levelSelectorMenu()
     {
         SceneManager.LoadScene(1);
@@ -19,7 +19,7 @@ public class ScenesManager : MonoBehaviour
         }
     }
 
-    public void nextLevel()
+    public void NextLevel()
     {
         SceneManager.LoadScene(nextSceneLoad);
 
@@ -47,7 +47,7 @@ public class ScenesManager : MonoBehaviour
         int currentIndex = SceneManager.GetActiveScene().buildIndex;
         currentIndex++;
 
-        if (currentIndex > 2)
+        if (currentIndex > 3)
         {
             currentIndex = 0;
             SceneManager.LoadScene(currentIndex);

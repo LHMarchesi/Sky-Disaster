@@ -6,9 +6,9 @@ public class PlayerManagment : MonoBehaviour
     public int AlliesRescues { get => alliesRescues; set => alliesRescues = value; }
     public bool CanDie { get => canDie; set => canDie = value; }
 
-    [SerializeField] private GameObject spawnPoint;
-    [SerializeField] private int alliesRescues;
+    [SerializeField] private Vector2 spawnPosition;
 
+    private int alliesRescues;
     private int levelcompleted = 0;
     private float currentPosition;
     private bool canDie;
@@ -43,6 +43,7 @@ public class PlayerManagment : MonoBehaviour
     public void RespawnTime()
     {
         StartCoroutine(WaitForPlayerRespawn());
+        transform.position = spawnPosition;
     }
 
     private IEnumerator WaitForPlayerRespawn()
