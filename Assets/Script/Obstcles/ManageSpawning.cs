@@ -9,7 +9,7 @@ public class ObstacleSpawner
     public float spawnInterval;      // Intervalo entre cada spawn
     public float startDelay;         // Tiempo de espera antes de empezar a spawnear
     public bool isEnabled = true;
-    public bool shouldStopSpawning;  // Booleano para detener el spawn en tiempo de ejecución
+    public bool shouldStopSpawning; 
 }
 
 public class ManageSpawning : MonoBehaviour

@@ -1816,7 +1816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manageSpawning: {fileID: 581918923}
-  maxTime: 60
+  maxTime: 73
 --- !u!1 &575786824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,14 +1982,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPool: {fileID: 1031751960}
   asteroidData: {fileID: 11400000, guid: d4125e492ffbd254382c63ea84c8bfc5, type: 2}
-  tsunamiFactory: {fileID: 996438158}
-  brokenBuildingFactory: {fileID: 1645540662}
-  allieFactory: {fileID: 238763668}
-  finisherFactory: {fileID: 1053231958}
   timeBetweenAsteroids: 1
-  timeBetweenTsunamis: 6
-  timeBetweenBrokenBuilding: 8
-  timeBetweenAllie: 5
+  obstacleSpawners:
+  - factory: {fileID: 996438158}
+    spawnInterval: 12
+    startDelay: 30
+    isEnabled: 1
+    shouldStopSpawning: 0
+  - factory: {fileID: 1645540662}
+    spawnInterval: 15
+    startDelay: 20
+    isEnabled: 1
+    shouldStopSpawning: 0
+  - factory: {fileID: 238763668}
+    spawnInterval: 8
+    startDelay: 0
+    isEnabled: 1
+    shouldStopSpawning: 0
+  finisherSpawner:
+    factory: {fileID: 1053231958}
+    spawnInterval: 0
+    startDelay: 0
+    isEnabled: 1
+    shouldStopSpawning: 0
 --- !u!4 &581918924
 Transform:
   m_ObjectHideFlags: 0
