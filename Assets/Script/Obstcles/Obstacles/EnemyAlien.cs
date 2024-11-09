@@ -21,6 +21,7 @@ public class EnemyAlien : Obstacle
     private Animator animator;
 
     private bool isPositionSet;
+    private float timeoutDelay = 2f;
 
     private void Awake()
     {
@@ -30,6 +31,8 @@ public class EnemyAlien : Obstacle
 
     public override void Initialize()
     {
+        Invoke("Deactivate", timeoutDelay);
+
         switch (currentState)
         {
             case States.attack0:
@@ -85,5 +88,10 @@ public class EnemyAlien : Obstacle
         {
             animator.SetBool("Attack1", false);
         }
+    }
+
+    private void Deactivate()
+    {
+        Destroy(gameObject);
     }
 }
