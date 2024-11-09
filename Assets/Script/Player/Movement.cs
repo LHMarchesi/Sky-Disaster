@@ -6,7 +6,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float timeToRevert = 3f;
+    private float timeToRevert = 3f;
     private Rigidbody2D playerRB;
     private Vector2 moveInput;
     private Animator animator;

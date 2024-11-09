@@ -107,7 +107,6 @@ public class EnemyAlien : Obstacle
 
     private void HideWarning()
     {
-        Debug.Log("hideWarning");
         warningSprite.SetActive(false);
         StartAttack();
     }

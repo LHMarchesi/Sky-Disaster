@@ -1972,7 +1972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manageSpawning: {fileID: 1752416171}
-  maxTime: 120
+  maxTime: 75
 --- !u!1 &567431027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2884,7 +2884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b84c8f48d1d7744a18445f2371f35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneLoad: 0
 --- !u!114 &1000546857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4691,7 +4690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b84c8f48d1d7744a18445f2371f35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneLoad: 0
 --- !u!114 &1498729213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5093,7 +5091,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b84c8f48d1d7744a18445f2371f35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneLoad: 0
 --- !u!114 &1622642820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5610,18 +5607,18 @@ MonoBehaviour:
   timeBetweenAsteroids: 3
   obstacleSpawners:
   - factory: {fileID: 3757187}
-    spawnInterval: 10
-    startDelay: 10
+    spawnInterval: 13
+    startDelay: 30
     isEnabled: 1
     shouldStopSpawning: 0
   - factory: {fileID: 1975663486}
-    spawnInterval: 30
-    startDelay: 25
+    spawnInterval: 23
+    startDelay: 40
     isEnabled: 1
     shouldStopSpawning: 0
   - factory: {fileID: 1554114017}
-    spawnInterval: 8
-    startDelay: 0
+    spawnInterval: 5
+    startDelay: 3
     isEnabled: 1
     shouldStopSpawning: 0
   finisherSpawner:
