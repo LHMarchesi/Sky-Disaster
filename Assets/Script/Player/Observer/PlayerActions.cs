@@ -1,10 +1,9 @@
 using UnityEngine;
 using System;
-
 public class PlayerActions : MonoBehaviour
 {
     public static event Action OnWin;
-
+    //public static event Action OnLevelCompleted;
     PlayerManagment playerManagment;
     PlayerHealth playerHealth;
 
@@ -16,16 +15,15 @@ public class PlayerActions : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IInteractuable interactuable = collision.GetComponent<IInteractuable>();
-
-        if (interactuable != null)
-        {
-            interactuable.Interact();
-        }
-
         if (collision.CompareTag("Dead") && playerManagment.CanDie)
         {
             playerHealth.GetDamage();
+        }
+
+        if (collision.CompareTag("Allie"))
+        {
+            playerManagment.AllieSaved();
+            Destroy(collision.gameObject);
         }
 
         if (collision.CompareTag("Win"))
@@ -34,6 +32,6 @@ public class PlayerActions : MonoBehaviour
             playerManagment.LevelCompleted();
         }
     }
+
+    // Implementar Strategy IInteractuable
 }
-
-

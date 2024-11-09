@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     private ProgessBar progessBar;
     private PlayerManagment playerManagment;
+    private PlayerHealth playerHealth;
     public TextMeshProUGUI textCiviles;
     public Image[] hearts;
     public Sprite fulledHeart;
@@ -31,6 +32,7 @@ public class UIManager : MonoBehaviour
         }
         progessBar = GetComponentInChildren<ProgessBar>();
         playerManagment = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManagment>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     private void Start()
@@ -40,6 +42,12 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        ManageHealUI();
+        progessBar.UpdateProgess(GameManager.instance.Timer, GameManager.instance.MaxTime);
+    }
+
+    private void ManageHealUI()
+    {
         textCiviles.text = playerManagment.AlliesRescues.ToString();
 
         foreach (Image img in hearts)
@@ -47,11 +55,28 @@ public class UIManager : MonoBehaviour
             img.sprite = emptyHeart;
         }
 
-        for (int i = 0; i < playerManagment.Health; i++)
+        for (int i = 0; i < playerHealth.Health; i++)
         {
             hearts[i].sprite = fulledHeart;
         }
+    }
 
-        progessBar.UpdateProgess(GameManager.instance.Timer, GameManager.instance.MaxTime);
+    public void ShowLoseScreen(int points, int saved)
+    {
+        loseScreen.gameObject.SetActive(true);
+        loseScreen.UpdateScreen(points, saved);
+    }
+
+    public void ShowWinScreen(int points, int saved)
+    {
+        winScreen.gameObject.SetActive(true);
+        winScreen.UpdateScreen(points, saved);
+    }
+
+    public void Reset()
+    {
+        UIManager.instance.winScreen.gameObject.SetActive(false);
+        UIManager.instance.loseScreen.gameObject.SetActive(false);
+        UIManager.instance.pauseScreen.SetActive(false);
     }
 }

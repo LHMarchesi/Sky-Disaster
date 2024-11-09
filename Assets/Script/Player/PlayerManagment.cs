@@ -3,80 +3,56 @@ using UnityEngine;
 
 public class PlayerManagment : MonoBehaviour
 {
-    public int Health { get => health; set => health = value; }
     public int AlliesRescues { get => alliesRescues; set => alliesRescues = value; }
+    public bool CanDie { get => canDie; set => canDie = value; }
 
     [SerializeField] private GameObject spawnPoint;
-    [SerializeField] private int health;
     [SerializeField] private int alliesRescues;
 
     private int levelcompleted = 0;
     private float currentPosition;
     private bool canDie;
-    private bool isDead;
     private Animator animator;
+    private PlayerActions playerActions;
+    private PlayerHealth playerHealth;
 
     private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
+        playerActions = gameObject.GetComponent<PlayerActions>();
+        playerHealth = gameObject.GetComponent<PlayerHealth>();
     }
     void Start()
     {
-        health = 3;
         alliesRescues = 0;
-        canDie = true;
-        isDead = false;
+        CanDie = true;
     }
 
-    void Update()
+    public void AllieSaved()
     {
-        // Si esta muerto, no puede morir y inicia la corrutina RespawnTime
-        if (isDead)
-        {
-            canDie = false;
-            animator.SetBool("Dead", true);
-            StartCoroutine(RespawnTime());
-        }
+        alliesRescues++;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void LevelCompleted()
     {
-        // Si collisionamos con un objeto con el Tag "Dead" y Pueda morir se nos resta una vida y nos spawnea en la posicion de spawnPoint
-        if (collision.CompareTag("Dead") && canDie == true)
-        {
-            isDead = true;
-            Health--;
-            transform.position = spawnPoint.transform.position;
-            if (Health <= 0)
-            {
-                Destroy(gameObject);
-                GameManager.instance.Lose();
-                StopAllCoroutines();
-            }
-        }
-
-        // Si colisionamos con un objeto con el Tag "Allie" Se nos suma un punto a la variable y ese objeto se destruye 
-        if (collision.CompareTag("Allie"))
-        {
-            AlliesRescues++;
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.CompareTag("Win"))
-        {
-            levelcompleted++;
-            GameManager.instance.Win();
-            StopAllCoroutines();
-        }
+        levelcompleted++;
     }
+
 
     // Espera 2 segundos luego puede morir y ya no estara muerto(Tiempo de Respawn)
-    private IEnumerator RespawnTime()
+    public void RespawnTime()
     {
+        StartCoroutine(WaitForPlayerRespawn());
+    }
+
+    private IEnumerator WaitForPlayerRespawn()
+    {
+        CanDie = false;
+        animator.SetBool("Dead", true);
+
         yield return new WaitForSeconds(2);
 
-        canDie = true;
-        isDead = false;
+        CanDie = true;
         animator.SetBool("Dead", false);
     }
 }
