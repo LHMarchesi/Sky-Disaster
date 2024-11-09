@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BrokenBuilding : Obstacle
+public class BrokenBuilding : Obstacle, IDamageInteractable
 {
     [SerializeField] private int _speed;
     [SerializeField] private Vector2 _spawnPosition;
@@ -10,6 +10,10 @@ public class BrokenBuilding : Obstacle
     public override void Initialize()
     {
         
+    }
+
+    public void Interact()
+    {
     }
 
     private void Update()

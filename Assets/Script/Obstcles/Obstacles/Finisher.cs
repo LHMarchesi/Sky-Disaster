@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Finisher : Obstacle
+public class Finisher : Obstacle, IWinInteractable
 {
     [SerializeField] private int _speed;
     [SerializeField] private Vector2 _spawnPosition;
@@ -23,5 +23,9 @@ public class Finisher : Obstacle
         {
             transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
+    }
+
+    public void Interact()
+    {
     }
 }

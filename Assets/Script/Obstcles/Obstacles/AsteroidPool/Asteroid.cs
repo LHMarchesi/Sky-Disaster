@@ -1,7 +1,8 @@
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Asteroid : MonoBehaviour
+public class Asteroid : MonoBehaviour, IDamageInteractable
 {
     [SerializeField] private float timeoutDelay = 3f;
 
@@ -15,5 +16,9 @@ public class Asteroid : MonoBehaviour
     private void Deactivate()
     {
         pool.Release(this);
+    }
+
+    public void Interact()
+    {
     }
 }

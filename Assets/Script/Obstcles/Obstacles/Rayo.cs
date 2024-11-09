@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Rendering;
 
-public class Rayo : MonoBehaviour{
+public class Rayo : MonoBehaviour, IDamageInteractable
+{
 
     [SerializeField] private float speedX;
     [SerializeField] private float speedY;
@@ -68,6 +69,10 @@ public class Rayo : MonoBehaviour{
            
             
         }
+    }
+
+    public void Interact()
+    {
     }
 }
 

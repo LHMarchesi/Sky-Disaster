@@ -3,7 +3,8 @@ using System;
 public class PlayerActions : MonoBehaviour
 {
     public static event Action OnWin;
-    //public static event Action OnLevelCompleted;
+    public static event Action OnRescue;
+  
     PlayerManagment playerManagment;
     PlayerHealth playerHealth;
 
@@ -15,23 +16,26 @@ public class PlayerActions : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Dead") && playerManagment.CanDie)
-        {
-            playerHealth.GetDamage();
-        }
+        IInteractuable interactuable = collision.GetComponent<IInteractuable>();
 
-        if (collision.CompareTag("Allie"))
+        if (interactuable != null)
         {
-            playerManagment.AllieSaved();
-            Destroy(collision.gameObject);
-        }
+            interactuable.Interact();
 
-        if (collision.CompareTag("Win"))
-        {
-            OnWin?.Invoke();
-            playerManagment.LevelCompleted();
+            if (interactuable is IWinInteractable)
+            {
+                OnWin?.Invoke();
+                playerManagment.LevelCompleted();
+            }
+            else if (interactuable is IDamageInteractable)
+            {
+                playerHealth.GetDamage();
+            }
         }
     }
 
-    // Implementar Strategy IInteractuable
+    public static void TriggerRescue()
+    {
+        OnRescue?.Invoke();
+    }
 }

@@ -6,7 +6,7 @@ enum States
     attack0, attack1, attack2,
 }
 
-public class EnemyAlien : Obstacle
+public class EnemyAlien : Obstacle, IDamageInteractable
 {
     [SerializeField] private int Attack0speed;
     [SerializeField] private int Attack1speed;
@@ -85,5 +85,9 @@ public class EnemyAlien : Obstacle
         {
             animator.SetBool("Attack1", false);
         }
+    }
+
+    public void Interact()
+    {
     }
 }

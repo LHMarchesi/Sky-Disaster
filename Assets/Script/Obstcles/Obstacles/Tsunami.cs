@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Tsunami : Obstacle
+public class Tsunami : Obstacle, IDamageInteractable
 {
     [SerializeField] private int _speed;
     [SerializeField] private Vector2 _spawnPosition;
@@ -10,6 +10,11 @@ public class Tsunami : Obstacle
     public override void Initialize()
     {
     }
+
+    public void Interact()
+    {
+    }
+
     void Update()
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime);

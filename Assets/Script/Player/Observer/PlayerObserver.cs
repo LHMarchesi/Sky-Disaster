@@ -12,14 +12,19 @@ public class PlayerObserver : MonoBehaviour
     {
         PlayerHealth.OnGetDamage += playerManagment.RespawnTime;
         PlayerHealth.OnDead += OnLose;
+
         PlayerActions.OnWin += OnWin;
+        PlayerActions.OnRescue += AllieRescue;
     }
 
     void OnDisable()
     {
         PlayerHealth.OnGetDamage -= playerManagment.RespawnTime;
         PlayerHealth.OnDead -= OnLose;
+
         PlayerActions.OnWin -= OnWin;
+        PlayerActions.OnRescue -= AllieRescue;
+
     }
 
     private void OnLose()
@@ -34,6 +39,11 @@ public class PlayerObserver : MonoBehaviour
     {
         GameManager.instance.Win();
         StopAllCoroutines();
+    } 
+    
+    private void AllieRescue()
+    {
+        playerManagment.AllieSaved();
     }
 }
 
