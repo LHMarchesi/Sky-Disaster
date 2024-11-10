@@ -6,10 +6,14 @@ using UnityEngine;
 public class ObstacleSpawner
 {
     public ObstacleFactory factory;
-    public float spawnInterval;      // Intervalo entre cada spawn
+    public float spawnInterval = 1f; // Ajustar intervalo bajo para que aparezcan más seguido
     public float startDelay;         // Tiempo de espera antes de empezar a spawnear
     public bool isEnabled = true;
+<<<<<<< Updated upstream
     public bool shouldStopSpawning;  // Booleano para detener el spawn en tiempo de ejecución
+=======
+    public bool shouldStopSpawning;
+>>>>>>> Stashed changes
 }
 
 public class ManageSpawning : MonoBehaviour
@@ -78,16 +82,19 @@ public class ManageSpawning : MonoBehaviour
 
     private IEnumerator SpawnObstacle(ObstacleSpawner spawner)
     {
-        // Espera el tiempo de retraso antes de empezar a spawnear
         yield return new WaitForSeconds(spawner.startDelay);
 
         WaitForSeconds wait = new WaitForSeconds(spawner.spawnInterval);
+
         while (!spawner.shouldStopSpawning)
         {
             spawner.factory.CreateObstacle();
+
             yield return wait;
         }
     }
+
+
 
     public void StopSpawningObstacle(ObstacleFactory factory)
     {
