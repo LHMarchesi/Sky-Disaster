@@ -1,18 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AbstractFactory : MonoBehaviour
+public abstract class AbstractFactory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public abstract Obstacle obstacle { get; set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract Obstacle CreateObstacle();
 }

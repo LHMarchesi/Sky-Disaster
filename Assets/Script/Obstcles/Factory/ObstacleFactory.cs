@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class ObstacleFactory : MonoBehaviour
+public class ObstacleFactory : AbstractFactory
 {
     [SerializeField] Obstacle _obstacle;
 
-    public Obstacle obstacle { get => _obstacle; set => _obstacle = value; }
+    public override Obstacle obstacle { get => _obstacle; set => _obstacle = value; }
 
-    public Obstacle CreateObstacle()
+    public override Obstacle CreateObstacle()
     {
         Obstacle newObstacle = Instantiate(_obstacle, Vector2.zero, Quaternion.identity);
         newObstacle.Initialize();

@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class ObstacleSpawner
 {
-    public ObstacleFactory factory;
+    public AbstractFactory factory;  // Factory de obejetos
     public float spawnInterval;      // Intervalo entre cada spawn
     public float startDelay;         // Tiempo de espera antes de empezar a spawnear
     public bool isEnabled = true;

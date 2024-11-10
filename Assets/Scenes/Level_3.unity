@@ -1742,7 +1742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manageSpawning: {fileID: 1643919857}
-  maxTime: 75
+  maxTime: 70
 --- !u!4 &606163609
 Transform:
   m_ObjectHideFlags: 0
@@ -12399,7 +12399,7 @@ MonoBehaviour:
     shouldStopSpawning: 1
   - factory: {fileID: 435832866}
     spawnInterval: 7
-    startDelay: 2
+    startDelay: 5
     isEnabled: 1
     shouldStopSpawning: 0
   - factory: {fileID: 370079778}
@@ -12409,7 +12409,7 @@ MonoBehaviour:
     shouldStopSpawning: 0
   - factory: {fileID: 1029333843}
     spawnInterval: 12
-    startDelay: 0
+    startDelay: 10
     isEnabled: 1
     shouldStopSpawning: 0
   finisherSpawner:
