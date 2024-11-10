@@ -19,6 +19,12 @@ public class ScenesManager : MonoBehaviour
         }
     }
 
+    public void Golevel(string levelName)
+    {
+        SceneManager.LoadScene(levelName);
+        Time.timeScale = 1f;
+    }
+
     public void NextLevel()
     {
         SceneManager.LoadScene(nextSceneLoad);
