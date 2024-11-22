@@ -61,6 +61,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void ShowPauseScreen(bool input)
+    {
+        SoundManager.instance.ToggleSoundMenuGame(input);
+    }
+
     public void ShowLoseScreen(int points, int saved)
     {
         loseScreen.gameObject.SetActive(true);

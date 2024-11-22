@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
     private PlayerHealth playerHealth;
 
     private float timer;
+
     private bool isPaused;
+    public bool inOption = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -26,6 +29,11 @@ public class GameManager : MonoBehaviour
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
+    void Start()
+    {
+        Resume();
+    }
+
     private void OnEnable()
     {
         manageSpawning.SetSpawning(true);
@@ -36,9 +44,12 @@ public class GameManager : MonoBehaviour
         timer += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
+            if (isPaused && inOption == false)
             {
                 Resume();
+
+              
+                
             }
             else
             {
