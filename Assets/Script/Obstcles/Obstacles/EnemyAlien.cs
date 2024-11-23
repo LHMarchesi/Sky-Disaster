@@ -6,13 +6,15 @@ enum States
     attack0, attack1, attack2,
 }
 
-public class EnemyAlien : Obstacle
+public class EnemyAlien : Obstacle, IDamageInteractable
 {
     [SerializeField] private int attack0speed;
     [SerializeField] private GameObject warningSprite;
     [SerializeField] private int attack1speed;
     [SerializeField] private float rayInterval;
+
     private Vector2 _spawnPosition;
+
     private float nextRayTime;
     public override int speed { get => _speed; set => _speed = value; }
     public override Vector2 SpawnPosition { get => _spawnPosition; set => _spawnPosition = value; }
@@ -21,7 +23,9 @@ public class EnemyAlien : Obstacle
     private Animator animator;
 
     private int _speed;
+
     private bool isPositionSet;
+
     private float timeoutDelay = 15f;
     private float warningDuration = 1f;
 
@@ -94,6 +98,7 @@ public class EnemyAlien : Obstacle
     {
         _speed = attack1speed;
         transform.Translate(Vector3.left * speed * Time.deltaTime);
+
         if (Time.time >= nextRayTime)
         {
             animator.SetBool("Attack1", true);
@@ -118,5 +123,9 @@ public class EnemyAlien : Obstacle
     private void Deactivate()
     {
         Destroy(gameObject);
+    }
+
+    public void Interact()
+    {
     }
 }

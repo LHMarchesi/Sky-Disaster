@@ -17,7 +17,6 @@ public class SoundManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(optionsMenu);
         }
         else
         {
