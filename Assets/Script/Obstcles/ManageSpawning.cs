@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class ObstacleSpawner
 {
-    public AbstractFactory factory;  // Factory de obejetos
-    public float spawnInterval;      // Intervalo entre cada spawn
-    public float startDelay;         // Tiempo de espera antes de empezar a spawnear
+    public AbstractFactory factory;
+    public float spawnInterval;
+    public float startDelay;
     public bool isEnabled = true;
     public bool shouldStopSpawning; 
 }
@@ -33,20 +33,16 @@ public class ManageSpawning : MonoBehaviour
         yield return new WaitForSeconds(3f);
         yield return new WaitUntil(() => CanSpawn);
 
-        // Inicia el spawn de asteroides
         StartCoroutine(AsteroidSpawn());
 
-        // Inicia el spawn de cada obstáculo activo en la lista
         foreach (var spawner in obstacleSpawners)
         {
             if (spawner.isEnabled)
                 StartCoroutine(SpawnObstacle(spawner));
         }
 
-        // Espera hasta que el tiempo máximo se alcance
         yield return new WaitUntil(() => GameManager.instance.Timer >= GameManager.instance.MaxTime);
 
-        // Crea el obstáculo final
         if (finisherSpawner != null && finisherSpawner.factory != null)
         {
             finisherSpawner.factory.CreateObstacle();
@@ -78,7 +74,6 @@ public class ManageSpawning : MonoBehaviour
 
     private IEnumerator SpawnObstacle(ObstacleSpawner spawner)
     {
-        // Espera el tiempo de retraso antes de empezar a spawnear
         yield return new WaitForSeconds(spawner.startDelay);
 
         WaitForSeconds wait = new WaitForSeconds(spawner.spawnInterval);
@@ -91,7 +86,6 @@ public class ManageSpawning : MonoBehaviour
 
     public void StopSpawningObstacle(ObstacleFactory factory)
     {
-        // Busca el spawner correspondiente y establece `shouldStopSpawning` en true
         ObstacleSpawner spawner = obstacleSpawners.Find(s => s.factory == factory);
         if (spawner != null)
         {

@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            levelText.text = "PULSE ESPACIO PARA JUGAR";
+            levelText.text = "PRESS SPACE TO PLAY";
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(level);
@@ -33,10 +33,7 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("levelunlocked", currentLevel + 1);
             PlayerPrefs.SetInt("levelAt", currentLevel);
-
-
             SceneManager.LoadScene("LevelSelector");
-
         }
     }
 }

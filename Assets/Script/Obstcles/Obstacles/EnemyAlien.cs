@@ -104,7 +104,6 @@ public class EnemyAlien : Obstacle
             animator.SetBool("Attack1", false);
         }
     }
-
     private void HideWarning()
     {
         warningSprite.SetActive(false);

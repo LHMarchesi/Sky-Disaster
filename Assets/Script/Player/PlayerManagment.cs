@@ -38,8 +38,6 @@ public class PlayerManagment : MonoBehaviour
         levelcompleted++;
     }
 
-
-    // Espera 2 segundos luego puede morir y ya no estara muerto(Tiempo de Respawn)
     public void RespawnTime()
     {
         StartCoroutine(WaitForPlayerRespawn());

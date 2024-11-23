@@ -25,7 +25,6 @@ public class Allie : Obstacle, IInteractuable
 
     public override void Initialize()
     {
-        // sfx?
     }
 
     public void Interact()

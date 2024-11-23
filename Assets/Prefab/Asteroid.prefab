@@ -181,7 +181,7 @@ AudioSource:
   m_GameObject: {fileID: 6807391968706400493}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -555043788468376285, guid: 3364bcec8b5db8d4ab059ec603ef8cf6, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7978b44f40febcb4e83bdf9575f475ca, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.207
@@ -281,4 +281,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeoutDelay: 7
-  AsteroidData: {fileID: 11400000, guid: d4125e492ffbd254382c63ea84c8bfc5, type: 2}

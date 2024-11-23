@@ -4,6 +4,7 @@ using UnityEngine.Pool;
 public class AsteroidPool : MonoBehaviour
 {
     ObjectPool<Asteroid> asteroidoPool;
+
     [SerializeField]private Asteroid asteroid;
 
     private void Awake()
@@ -40,6 +41,4 @@ public class AsteroidPool : MonoBehaviour
     {
         asteroid.gameObject.SetActive(true);
     }
-
-   
 }

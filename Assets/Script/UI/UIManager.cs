@@ -15,7 +15,9 @@ public class UIManager : MonoBehaviour
     public Image[] hearts;
     public Sprite fulledHeart;
     public Sprite emptyHeart;
-
+    public GameObject speedBoost;
+    public GameObject immunity;
+    public GameObject extraLife;
     public UiScreen winScreen;
     public UiScreen loseScreen;
     public GameObject pauseScreen;

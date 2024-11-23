@@ -16,14 +16,12 @@ public class Rayo : MonoBehaviour, IDamageInteractable
     bool revertTimeBack = false;
     Movement movPlayer;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         isHit = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         rb.AddForce(new Vector2(speedX, speedY) * Time.deltaTime);
@@ -36,7 +34,6 @@ public class Rayo : MonoBehaviour, IDamageInteractable
             
         }
 
-        // Si sale de la pantalla se destruye
         if (transform.position.y < -6 || transform.position.x < -15)
         {
             Destroy(gameObject);
@@ -70,7 +67,6 @@ public class Rayo : MonoBehaviour, IDamageInteractable
             
         }
     }
-
     public void Interact()
     {
     }

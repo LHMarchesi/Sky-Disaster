@@ -24,7 +24,6 @@ public class Finisher : Obstacle, IWinInteractable
             transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
     }
-
     public void Interact()
     {
     }

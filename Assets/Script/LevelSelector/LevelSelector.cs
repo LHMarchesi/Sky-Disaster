@@ -29,7 +29,6 @@ public class LevelSelector : MonoBehaviour
             winIcon[i].SetActive(true);
         }
 
-        // Desbloqueo de niveles
         for (int i = 0; i < levelunlocked; i++)
         {
             LevelButtons[i].SetActive(true);
